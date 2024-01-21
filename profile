@@ -1,0 +1,1 @@
+web gunicorn foodcalorie.wsgi:aplication --log-file -
