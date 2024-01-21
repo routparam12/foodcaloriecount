@@ -1,20 +1,31 @@
 {
+  "version": 2,
   "builds": [
     {
       "src": "foodie/wsgi.py",
       "use": "@ardnt/vercel-python-wsgi",
-      "config": { "maxLambdaSize": "15mb" }
+      "config": {
+        "maxLambdaSize": "15mb"
+      }
     }
   ],
   "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "foodie/wsgi.py"
+    },
     {
       "src": "/(.*)",
       "dest": "foodie/wsgi.py"
     }
   ],
-  "functions":/(.*) {
-    "api": /(.*){
-      "runtime": "python3.9"
+  "functions": {
+    "api": {
+      "runtime": "python3.9",  // <-- Change this to python3.9
+      "includeFiles": ["foodie/*"],
+      "environment": {
+        "DJANGO_SETTINGS_MODULE": "foodie.settings"
+      }
     }
   }
 }
