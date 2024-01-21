@@ -21,7 +21,7 @@
   ],
   "functions": {
     "api": {
-      "runtime": "python3.9",  // <-- Change this to python3.9
+      "runtime": "python3.9",  
       "includeFiles": ["foodie/*"],
       "environment": {
         "DJANGO_SETTINGS_MODULE": "foodie.settings"
